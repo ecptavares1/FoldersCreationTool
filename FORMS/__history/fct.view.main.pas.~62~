@@ -1,0 +1,145 @@
+unit fct.view.main;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls,
+  Vcl.Imaging.jpeg, RzShellDialogs,fct.controller.main;
+
+type
+  TForm1 = class(TForm)
+    Panel1: TPanel;
+    Image1: TImage;
+    SpeedButton1: TSpeedButton;
+    Label1: TLabel;
+    edtFolder: TEdit;
+    SpeedButton2: TSpeedButton;
+    MyFolder: TRzSelectFolderDialog;
+    btExecute: TSpeedButton;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    edtProjectName: TEdit;
+    Label5: TLabel;
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure rmCreate(Sender: TObject);
+    procedure btExecuteClick(Sender: TObject);
+    procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure edtProjectNameChange(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure edtProjectNameKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure WMNChitTest(var M : TWMNChitTest);message WM_NCHITTEST;
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.btExecuteClick(Sender: TObject);
+begin
+  if MessageDlg('Create folders structure for Delphi Project ?',mtWarning,[mbYes,mbNo],0) = mrYes then
+  Begin
+    TFolderClass.New.LocalRaiz(edtFolder.Text).ProjectName(edtProjectName.Text).Exec;
+    edtFolder.Clear;
+    edtProjectName.Clear;
+    edtProjectName.Enabled := False;
+    btExecute.Enabled := False;
+  End
+  Else
+  Begin
+    edtFolder.Clear;
+    btExecute.Enabled := False;
+    edtProjectName.Clear;
+    edtProjectName.Enabled := False;
+  End;
+end;
+
+procedure TForm1.rmCreate(Sender: TObject);
+begin
+  TFolderClass.New.EnsureShellFolderPopupItem('Create Folder Structure for Project...');
+  if ParamCount > 0 then
+  Begin
+    edtFolder.Text := ParamStr(1);
+    btExecute.Enabled := False;
+    edtProjectName.Enabled := True;
+  End
+  Else
+  Begin
+    btExecute.Enabled := False;
+    edtProjectName.Clear;
+    edtProjectName.Enabled := False;
+  End;
+end;
+
+procedure TForm1.SpeedButton1Click(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+procedure TForm1.SpeedButton2Click(Sender: TObject);
+begin
+  if MyFolder.Execute then
+  Begin
+    edtFolder.Clear;
+    edtProjectName.Clear;
+    edtProjectName.Enabled := True;
+    edtProjectName.SetFocus;
+    edtFolder.Text := MyFolder.SelectedPathName;
+  End;
+end;
+
+procedure TForm1.edtProjectNameChange(Sender: TObject);
+begin
+   btExecute.Enabled := Length(edtProjectName.Text) > 0;
+end;
+
+procedure TForm1.edtProjectNameKeyPress(Sender: TObject; var Key: Char);
+begin
+  if not (key in ['A'..'Z','a'..'z']) and not (Key in ['1'..'9']) then
+      Key := #0;
+end;
+
+procedure TForm1.FormShow(Sender: TObject);
+begin
+  if edtFolder.Text <> '' then
+    edtProjectName.SetFocus;
+end;
+
+procedure TForm1.Image1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+Const
+    SC_DRAGMOVE = $f012;
+begin
+  ReleaseCapture;
+  Perform(wm_SysCommand,sc_DragMove,0);
+end;
+
+procedure TForm1.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+  Const
+    SC_DRAGMOVE = $f012;
+begin
+  ReleaseCapture;
+  Perform(wm_SysCommand,sc_DragMove,0);
+end;
+
+procedure TForm1.WMNChitTest(var M: TWMNChitTest);
+begin
+  inherited;
+  if M.Result = htclient then
+    M.Result := htCaption;
+end;
+
+end.

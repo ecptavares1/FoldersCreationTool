@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/10/10 01:26:11.000.311,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/10/10 15:29:14.000.189,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/10/11 11:15:28.000.617,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/10/16 09:56:37.000.767,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/10/16 15:57:44.000.328,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/10/24 21:33:25.000.763,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/10/24 21:35:57.000.001,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/10/26 22:22:31.000.449,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/10/26 23:58:10.000.010,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/10/27 00:04:16.000.162,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/11/05 12:37:07.000.676,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/11/08 12:25:06.000.310,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/11/12 12:14:16.000.198,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/11/12 13:26:58.000.647,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/11/15 13:46:38.000.853,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/11/17 14:13:24.000.556,=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/11/17 14:16:50.000.861,D:\Documents\Embarcadero\Studio\Projects\My Applications\Folders Creation Tool\FORMS\fct.view.main.pas=D:\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/11/17 14:16:50.000.861,D:\Documents\Embarcadero\Studio\Projects\My Applications\Folders Creation Tool\FORMS\fct.view.main.dfm=D:\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2020/11/17 14:17:22.000.236,D:\Documents\Embarcadero\Studio\Projects\My Applications\Folders Creation Tool\PROJECT\FCT.dproj=D:\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2020/11/17 14:27:35.000.837,=D:\Documents\Embarcadero\Studio\Projects\My Applications\Folders Creation Tool\PROJECT\Unit1.pas</Transaction>
+    <Transaction>2020/11/17 14:28:11.000.013,D:\Documents\Embarcadero\Studio\Projects\My Applications\Folders Creation Tool\PROJECT\Unit1.pas=D:\Documents\Embarcadero\Studio\Projects\My Applications\Folders Creation Tool\FORMS\fct.controller.main.pas</Transaction>
+    <Transaction>2020/11/17 14:29:16.000.332,=D:\Documents\Embarcadero\Studio\Projects\My Applications\Folders Creation Tool\PROJECT\Unit1.pas</Transaction>
+    <Transaction>2020/11/17 14:29:47.000.147,D:\Documents\Embarcadero\Studio\Projects\My Applications\Folders Creation Tool\PROJECT\Unit1.pas=D:\Documents\Embarcadero\Studio\Projects\My Applications\Folders Creation Tool\FORMS\fct.controller.interfaces.pas</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5" Android="Mycell"/>
+		<PMac iOSSimulator="iPhone5"/>
+		<PMacBook iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
+</BorlandProject>

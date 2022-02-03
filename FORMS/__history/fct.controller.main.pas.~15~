@@ -1,0 +1,89 @@
+unit fct.controller.main;
+
+interface
+
+Uses
+  fct.Controller.Interfaces,System.sysUtils, Vcl.Dialogs,Registry, Vcl.Forms,  Winapi.Windows, Winapi.Messages, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls,
+  Vcl.Imaging.jpeg;
+
+type
+  TFolderClass = class(TInterfacedObject,iFolderInterface)
+    private
+      FRaiz : String;
+    public
+    constructor Create;
+    destructor Destroy;override;
+    class Function New : iFolderInterface;
+    function LocalRaiz(Value : String) : iFolderInterface;
+    function Exec : iFolderInterface;
+    function EnsureShellFolderPopupItem(Value: String) : iFolderInterface;
+  end;
+
+implementation
+
+{ TFolderClass }
+
+constructor TFolderClass.Create;
+begin
+
+end;
+
+destructor TFolderClass.Destroy;
+begin
+
+  inherited;
+end;
+
+function TFolderClass.EnsureShellFolderPopupItem(
+  Value: String): iFolderInterface;
+begin
+  Result := Self;
+  With TRegistry.Create do
+  Begin
+    try
+      RootKey := HKEY_CLASSES_ROOT;
+      if openKey('Directory\Shell',true) then
+        Begin
+          if OpenKey(Value + '\command',true) then
+            WriteString('','"' + Application.ExeName + '" "%1"');
+        End;
+    finally
+      Free;
+    end;
+  End;
+end;
+
+function TFolderClass.Exec: iFolderInterface;
+begin
+  if FRaiz <> '' then
+  Begin
+    if (not DirectoryExists(FRaiz + '\DCU')) and (not DirectoryExists(FRaiz + '\EXE')) and (not DirectoryExists(FRaiz + '\EXE\DADOS')) and (not DirectoryExists(FRaiz + '\FORMS')) and (not DirectoryExists(FRaiz + '\IMAGES')) and (not DirectoryExists(FRaiz + '\PROJETO')) then
+     Begin
+      ForceDirectories(FRaiz + '\DCU');
+      ForceDirectories(FRaiz + '\EXE');
+      ForceDirectories(FRaiz + '\EXE\DADOS');
+      ForceDirectories(FRaiz + '\FORMS');
+      ForceDirectories(FRaiz + '\IMAGES');
+      ForceDirectories(FRaiz + '\PROJETO');
+      MessageDlg('Folders Created Successfully',mtWarning,[mbOk],0);
+     End
+     Else
+     Begin
+       MessageDlg('Folders have already been created.',mtWarning,[mbOk],0);
+     End;
+  End;
+end;
+
+function TFolderClass.LocalRaiz(Value: String): iFolderInterface;
+begin
+  Result := Self;
+  FRaiz := Value;
+end;
+
+class function TFolderClass.New: iFolderInterface;
+begin
+    Result := Self.Create;
+end;
+
+end.
